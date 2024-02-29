@@ -17,7 +17,9 @@ int main(){
                 if(a<=0 || a>500000||b<=0 || b>500000|| s<=0){
                     throw ExceptionBad();
                 }
-                Gpan->Insert(a,b,d,s);
+                else{
+                    Gpan->Insert(a,b,d,s);
+                }
             }
             else if(cmd =="END"){
                 break;
@@ -26,7 +28,12 @@ int main(){
             else if(cmd =="PRINT"){
                 int a;
                 cin>>a;
-                Gpan->Print(a);
+                if(a<=0 || a>500000){
+                    throw ExceptionBad();
+                }
+                else{
+                    Gpan->Print(a);
+                }
             }
             else if(cmd =="DELETE"){
                 int a;
@@ -40,23 +47,44 @@ int main(){
                 int a,b;
                 double A;
                 cin>>a>>b>>A;
-                if(a<=50000 && a>=0&& b<=50000 && b>=0){
+                if(a<=500000 && a>=0&& b<=500000 && b>=0){
                     Gpan->Traffic(a,b,A);
+                }
+                else{
+                    throw ExceptionBad();
                 }
             }
             else if(cmd == "UPDATE"){
-                cout<<"we enter Update"<<endl;
                 std::string fileName;
                 std::cin>>fileName;
                 std::fstream fin(fileName.c_str());
                 Gpan->Readfile(fin,true);
             }
             else if(cmd == "LOAD"){
-                cout<<"we enter load"<<endl;
                 std::string fileName;
                 std::cin>>fileName;
                 std::fstream fin(fileName.c_str());
                 Gpan->Readfile(fin,false);
+            }
+            else if(cmd == "PATH"){
+                int a,b;
+                cin>>a>>b;
+                if(a<=500000 && a>=0&& b <=500000 && b>=0){
+                    Gpan->Path(a,b);
+                }
+                else{
+                    throw ExceptionBad();
+                }
+            }
+            else if(cmd == "LOWEST"){
+                int a,b;
+                cin>>a>>b;
+                if(a<=500000 && a>=0 && b <=500000 && b>=0){
+                    Gpan->Lowest(a,b);
+                }
+                else{
+                    throw ExceptionBad();
+                }
             }
         }
         catch(ExceptionBad l){

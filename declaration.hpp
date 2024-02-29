@@ -22,6 +22,7 @@ public:
     double getS();
     void setS(double s2);
     float calcT();
+    double getA();
 private: 
     double d,S,A;
     int name;
@@ -30,37 +31,38 @@ private:
 };
 class Pair{
     public: 
-    Pair();
     Pair(int in, float distanceIn){
         i = in;
-        distance = distanceIn;
+        T = distanceIn;
     }
-    float getDistance(){
-        return distance;
+    float getT(){
+        return T;
+    }
+    void setT(float combinedWeight){
+        T = combinedWeight;
     }
     int getName(){
         return i;
     }
     private:
     int i;
-    float distance;
+    float T;
     
 };
 
 class Heap{
     public: 
-    void insert();
     int ExtractMin(); // return the numebr of element
-    Heap(bool containVertex[], Node vertex[], int startNode);
+    Heap(int sizeIN, int startNode, bool *containVertex);
     ~Heap();
     int getSize();
-    
-
+    bool relax(int u, int v, float Wuv);
+    float returnT(int b);
 
     private:
+    int size;
     void heapifyUP(int cursize);
     Pair ** arrayOfVertex;
-    int size;
     int cursize;
     void heapifyDown(int size, int curElement);
 };
@@ -86,9 +88,12 @@ private:
     List ** vertex;
     bool *containVertex;// if the node doesn't have a graph
     int sizeOfGraph;
+    int *arrayParent;
 public:
     Graph();
     ~Graph(); // literate through and delete
+    void Path(int a, int b);
+    void Lowest(int a, int b);
     void Insert(int a, int b, double d, double s);
     void Print(int a);
     void Delete(int a);

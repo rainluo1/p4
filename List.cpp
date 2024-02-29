@@ -7,7 +7,6 @@ using namespace std;
 
 List::List(){
     listHead_  = nullptr;
-    //cout<<"here"<<listHead_->getName()<<endl;
 }
 List::~List(){
     Node *walk = listHead_;
@@ -63,10 +62,13 @@ void List::insert(Node *N){
         if(temp->getName()== N->getName()){
             temp->setD(N->getD());
             temp->setS(N->getS());
+            delete N;
+            return;
         }
-        return;
+        temp = temp ->getNext();
+        
     }
     temp = listHead_;
     listHead_ = N;
-    N->setNext(temp);
+    listHead_->setNext(temp);
 }

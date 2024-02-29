@@ -5,6 +5,7 @@
         "*.tcc": "cpp",
         "compare": "cpp",
         "type_traits": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "ostream": "cpp"
     }
 }
