@@ -1,6 +1,6 @@
 ECE 250: Project 4 (Emergency Response) Design Document
 Tuesday, December 5, 2023
-
+#### This should be in the DSA portfolio 
 1. Class Overview
 
 Class Vertex: Represents a one way Edge in a Graph. Each edge has a distance, speed limit, vertex number (between 1 and 500000) and adjustment factor for traffic. Vertexes are stored in an adjacency list, and a Vertex is a node in one of the VertexLists. Each one way edge has a next and previous pointer to handle linked list operations necessary for insert, print, and other functions in the Graph.
